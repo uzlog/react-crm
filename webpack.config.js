@@ -10,11 +10,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js)$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ["babel-loader", "eslint-loader"]
             }
         ]
+    },
+    resolve: {
+        extensions: ["*", ".js", ".jsx"]
     },
     plugins: [new PrettierPlugin()],
     devServer: {
