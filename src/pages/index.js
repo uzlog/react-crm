@@ -1,22 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar/Sidebar";
+import { PageWrapper } from "./index.styled";
 
-const PageWrapper = ({ route: { sidebarEnabled, component: Component } }) => (
-    <React.Fragment>
+const Page = ({ route: { sidebarEnabled, component: Component } }) => (
+    <PageWrapper>
         <Sidebar visible={sidebarEnabled} />
         <Component />
-    </React.Fragment>
+    </PageWrapper>
 );
 
-PageWrapper.propTypes = {
+Page.propTypes = {
     route: PropTypes.shape({
-        sidebarEnabled: PropTypes.bool
+        sidebarEnabled: PropTypes.bool.isRequired,
+        component: PropTypes.elementType.isRequired
     })
 };
 
-PageWrapper.defaultProps = {
+Page.defaultProps = {
     route: { sidebarEnabled: false }
 };
 
-export default PageWrapper;
+export default Page;

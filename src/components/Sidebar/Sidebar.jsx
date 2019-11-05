@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SidebarItem from "./SidebarItem/SidebarItem";
+import { SidebarWrapper } from "./Sidebar.styled";
 
 const Sidebar = ({ visible }) => {
     if (!visible) {
@@ -7,9 +9,9 @@ const Sidebar = ({ visible }) => {
     }
 
     return (
-        <div>
-            <h1>Sidebar!</h1>
-        </div>
+        <SidebarWrapper>
+            <SidebarItem />
+        </SidebarWrapper>
     );
 };
 
