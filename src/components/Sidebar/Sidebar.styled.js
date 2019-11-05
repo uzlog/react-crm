@@ -7,5 +7,6 @@ export const SidebarWrapper = styled.div`
     background: #000000bf;
     width: 15vw;
     min-width: 150px;
+    max-width: 275px;
     color: white;
 `;
