@@ -66,6 +66,7 @@
     "dependencies": {
         "enzyme": "^3.8.0",
         "enzyme-adapter-react-16": "^1.9.1",
+        "polished": "^3.4.2",
         "prop-types": "^15.6.2",
         "react": "^16.8.1",
         "react-dom": "^16.8.1",

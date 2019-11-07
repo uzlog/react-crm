@@ -19,7 +19,9 @@
             }
         ],
         "react/prefer-stateless-function": 1,
-        "react/prop-types": 1
+        "react/prop-types": 1,
+        "import/prefer-default-export": "warn",
+        "import/no-named-as-default": "off"
     },
     "env": {
         "jest": true
