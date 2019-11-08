@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { svgSizes } from "../../../constants/fontSizes";
 import gutters from "../../../constants/gutters";
 
-// eslint-disable-next-line import/prefer-default-export
 export const SubSidebarWrapper = styled.div`
     visibility: ${props => (props.visible ? "visible" : "hidden")};
     width: ${props => (props.visible ? "12vw" : "0")};

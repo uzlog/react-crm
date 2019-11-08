@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
 
-// eslint-disable-next-line import/prefer-default-export
 export const StyledInput = styled.input`
     border: 0;
     outline: none;
