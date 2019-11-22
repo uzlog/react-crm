@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import useOnClickOutside from "use-onclickoutside";
 import TextInput from "../TextInput/TextInput";
 import SearchDropdown from "./SearchDropdown/SearchDropdown";
 import { StyledSearch } from "./Search.styled";
 
 const Search = ({ displayDropdown, dropdownLocation, children }) => {
-    const [dropdownVisible, setDropdownVisible] = useState(false);
+    const [dropdownVisible, setDropdownVisible] = useState(displayDropdown);
+    const ref = useRef();
+    useOnClickOutside(ref, () => setDropdownVisible(false));
 
     const handleSearchChange = event => {
         const searchValue = event.currentTarget.value;
@@ -13,8 +16,12 @@ const Search = ({ displayDropdown, dropdownLocation, children }) => {
         setDropdownVisible(searchValue.length);
     };
 
+    const handleSearchOnFocus = () => {
+        setDropdownVisible(true);
+    };
+
     return (
-        <StyledSearch>
+        <StyledSearch ref={ref} onFocus={handleSearchOnFocus}>
             <TextInput handleOnChange={handleSearchChange} />
             <SearchDropdown
                 visible={displayDropdown && dropdownVisible}
