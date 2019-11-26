@@ -11,11 +11,12 @@ const TextInput = ({
     color,
     width,
     padding,
-    fontSize
+    fontSize,
+    placeholder
 }) => {
     return (
         <StyledInput
-            placeholder="Search..."
+            placeholder={placeholder}
             onChange={handleOnChange}
             background={background}
             color={color}
@@ -32,7 +33,8 @@ TextInput.propTypes = {
     color: PropTypes.string,
     width: PropTypes.string,
     padding: PropTypes.string,
-    fontSize: PropTypes.string
+    fontSize: PropTypes.string,
+    placeholder: PropTypes.string
 };
 
 TextInput.defaultProps = {
@@ -41,7 +43,8 @@ TextInput.defaultProps = {
     color: colors.white,
     width: "100%",
     padding: gutters.oneThird,
-    fontSize: fontSizes.medium
+    fontSize: fontSizes.medium,
+    placeholder: "Search..."
 };
 
 export default TextInput;

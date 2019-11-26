@@ -1,15 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import colors from "../../../constants/colors";
+import gutters from "../../../constants/gutters";
+import { fontSizes, svgSizes } from "../../../constants/fontSizes";
 
 export const Item = styled(Link)`
-    display: block;
-    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+    padding: ${gutters.twoThirds} ${gutters.oneThird};
     text-decoration: none;
     text-align: center;
     color: white;
-    font-size: 1.5em;
+    font-size: ${fontSizes.large};
 
     :hover {
-        background: #00000036;
+        background: ${colors.primary.dark};
+    }
+
+    svg {
+        margin-right: 15px;
+        font-size: ${svgSizes.extraSmall};
     }
 `;

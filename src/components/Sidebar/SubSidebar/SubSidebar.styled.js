@@ -1,18 +1,27 @@
 import styled from "styled-components";
+import colors from "../../../constants/colors";
 import { svgSizes } from "../../../constants/fontSizes";
 import gutters from "../../../constants/gutters";
 
 export const SubSidebarWrapper = styled.div`
-    visibility: ${props => (props.visible ? "visible" : "hidden")};
-    width: ${props => (props.visible ? "12vw" : "0")};
-    min-width: ${props => (props.visible ? "150px" : "0")};
+    visibility: hidden;
+    width: 0;
+    min-width: 0;
     max-width: 250px;
     display: flex;
     flex-direction: column;
-    background: #445366d4;
+    background: ${colors.primary.light};
     color: white;
     overflow: hidden;
     transition: all 0.2s ease;
+
+    ${({ visible }) =>
+        visible &&
+        `
+            visibility:  visible;
+            width: 12vw;
+            min-width: 150px;
+    `};
 `;
 
 export const TopSection = styled.div`

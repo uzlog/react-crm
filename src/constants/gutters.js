@@ -2,7 +2,7 @@ import valueToPx from "../helpers/valueToPoint";
 
 const defaultGutter = 30;
 
-const gutters = {
+export const gutters = {
     oneThird: valueToPx(defaultGutter * 0.2),
     twoThirds: valueToPx(defaultGutter * 0.5),
     full: valueToPx(defaultGutter),

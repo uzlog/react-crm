@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import colors from "../../../../constants/colors";
 import { StyledDropdown } from "./SearchDropdown.styled";
 
-export const SearchDropdown = ({ visible, location, children }) => {
+export const SearchDropdown = ({ visible, location, background, children }) => {
     if (!visible) {
         return null;
     }
 
     return (
-        <StyledDropdown location={location}>
+        <StyledDropdown location={location} background={background}>
             {React.cloneElement(children, { visible })}
         </StyledDropdown>
     );
@@ -17,6 +18,7 @@ export const SearchDropdown = ({ visible, location, children }) => {
 SearchDropdown.propTypes = {
     visible: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
     location: PropTypes.string,
+    background: PropTypes.string,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
@@ -25,6 +27,7 @@ SearchDropdown.propTypes = {
 
 SearchDropdown.defaultProps = {
     visible: false,
+    background: colors.gray,
     location: "right"
 };
 

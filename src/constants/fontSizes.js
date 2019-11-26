@@ -1,21 +1,21 @@
 import { valueToRem } from "../helpers/valueToPoint";
 
-const defaultFontSize = 1.2;
+const defaultFontSize = 1.15;
 
 export const fontSizes = {
-    extraSmall: valueToRem(defaultFontSize * 0.3333),
-    small: valueToRem(defaultFontSize * 0.6666),
+    extraSmall: valueToRem(defaultFontSize * 0.66),
+    small: valueToRem(defaultFontSize * 0.85),
     medium: valueToRem(defaultFontSize),
-    large: valueToRem(defaultFontSize * 2),
-    extraLarge: valueToRem(defaultFontSize * 2.35)
+    large: valueToRem(defaultFontSize * 1.25),
+    extraLarge: valueToRem(defaultFontSize * 1.7)
 };
 
 export const svgSizes = {
-    extraSmall: valueToRem(defaultFontSize * 0.7),
+    extraSmall: valueToRem(defaultFontSize * 0.85),
     small: valueToRem(defaultFontSize * 1.1),
-    medium: valueToRem(defaultFontSize * 1.5),
-    large: valueToRem(defaultFontSize * 1.9),
-    extraLarge: valueToRem(defaultFontSize * 2.3)
+    medium: valueToRem(defaultFontSize * 1.4),
+    large: valueToRem(defaultFontSize * 1.8),
+    extraLarge: valueToRem(defaultFontSize * 2.2)
 };
 
 export default fontSizes;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../../../constants/colors";
 
 const generateXPosition = position => {
     if (position === "left") {
@@ -30,13 +31,12 @@ const generatePosition = position => {
     `;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const StyledDropdown = styled.div`
     position: absolute;
     width: 100%;
     min-height: 100%;
     ${props => generatePosition(props.location)}
-    background: silver;
-    border: 1px solid #00000036;
-    box-shadow: 0px 0px 2px 1px silver;
+    background: ${({ background }) => background};
+    border: 1px solid ${colors.borders.light};
+    box-shadow: 0px 0px 2px 1px ${colors.boxShadows.normal};
 `;

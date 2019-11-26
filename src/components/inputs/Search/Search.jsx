@@ -13,7 +13,9 @@ const Search = ({ displayDropdown, dropdownLocation, children }) => {
     const handleSearchChange = event => {
         const searchValue = event.currentTarget.value;
 
-        setDropdownVisible(searchValue.length);
+        if (searchValue) {
+            setDropdownVisible(true);
+        }
     };
 
     const handleSearchOnFocus = () => {
