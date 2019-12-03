@@ -5,8 +5,13 @@ import TextInput from "../TextInput/TextInput";
 import SearchDropdown from "./SearchDropdown/SearchDropdown";
 import { StyledSearch } from "./Search.styled";
 
-const Search = ({ displayDropdown, dropdownLocation, children }) => {
-    const [dropdownVisible, setDropdownVisible] = useState(displayDropdown);
+const Search = ({
+    displayDropdown,
+    defaultDropdownOpen,
+    dropdownLocation,
+    children
+}) => {
+    const [dropdownVisible, setDropdownVisible] = useState(defaultDropdownOpen);
     const ref = useRef();
     useOnClickOutside(ref, () => setDropdownVisible(false));
 
@@ -37,6 +42,7 @@ const Search = ({ displayDropdown, dropdownLocation, children }) => {
 
 Search.propTypes = {
     displayDropdown: PropTypes.bool,
+    defaultDropdownOpen: PropTypes.bool,
     dropdownLocation: PropTypes.string,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
@@ -46,6 +52,7 @@ Search.propTypes = {
 
 Search.defaultProps = {
     displayDropdown: true,
+    defaultDropdownOpen: false,
     dropdownLocation: "bottom"
 };
 

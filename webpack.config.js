@@ -21,6 +21,7 @@ module.exports = {
     },
     plugins: [new PrettierPlugin()],
     devServer: {
+        historyApiFallback: true,
         contentBase: path.resolve(__dirname, "public")
     }
 };

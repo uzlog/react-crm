@@ -12,7 +12,7 @@ const App = () => (
             const key = `routes-${index}`;
 
             return (
-                <Route path={path} key={key}>
+                <Route path={path} key={key} exact={!!route.exact}>
                     <PageWrapper route={{ ...restRouteProps }} />
                 </Route>
             );

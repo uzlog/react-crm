@@ -14,7 +14,7 @@ const Sidebar = ({ visible }) => {
 
     // For testing, delete later.
     const sidebarItemClicked = () => {
-        setSubSidebarOpen(!subSidebarOpen);
+        // setSubSidebarOpen(!subSidebarOpen);
     };
 
     const handleSubSidebarClose = () => {
