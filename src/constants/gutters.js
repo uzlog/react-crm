@@ -4,7 +4,8 @@ const defaultGutter = 30;
 
 export const gutters = {
     oneThird: valueToPx(defaultGutter * 0.2),
-    twoThirds: valueToPx(defaultGutter * 0.5),
+    half: valueToPx(defaultGutter * 0.5),
+    twoThirds: valueToPx(defaultGutter * 0.66),
     full: valueToPx(defaultGutter),
     double: valueToPx(defaultGutter * 2)
 };

@@ -1,5 +1,5 @@
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 
 const routes = [
     {
