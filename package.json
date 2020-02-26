@@ -15,7 +15,9 @@
         "test": "jest --watchAll",
         "test-once": "jest",
         "build": "webpack --mode production",
-        "start": "webpack-dev-server --config ./webpack.config.js --mode development --hot"
+        "start-client": "webpack-dev-server --config ./webpack.config.js --mode development --hot",
+        "start-server": "babel-node ./server/index.js",
+        "start": "concurrently \"npm run start-server\" \"npm run start-client\""
     },
     "husky": {
         "hooks": {
@@ -39,12 +41,16 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@babel/core": "^7.2.2",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.4",
+        "@babel/node": "^7.8.4",
+        "@babel/plugin-transform-runtime": "^7.8.3",
         "@babel/polyfill": "^7.2.5",
-        "@babel/preset-env": "^7.3.1",
+        "@babel/preset-env": "^7.8.4",
         "@babel/preset-react": "^7.0.0",
         "babel-eslint": "^10.0.1",
         "babel-loader": "^8.0.5",
+        "concurrently": "^5.1.0",
         "eslint": "^5.16.0",
         "eslint-config-airbnb": "^17.1.0",
         "eslint-config-prettier": "^4.0.0",
@@ -64,11 +70,15 @@
         "webpack-dev-server": "^3.1.14"
     },
     "dependencies": {
+        "@babel/runtime": "^7.8.4",
         "@fortawesome/fontawesome-svg-core": "^1.2.25",
         "@fortawesome/free-solid-svg-icons": "^5.11.2",
         "@fortawesome/react-fontawesome": "^0.1.7",
         "enzyme": "^3.8.0",
         "enzyme-adapter-react-16": "^1.9.1",
+        "fastify": "^2.12.0",
+        "fastify-cors": "^3.0.2",
+        "lodash": "^4.17.15",
         "polished": "^3.4.2",
         "prop-types": "^15.6.2",
         "react": "^16.8.1",
