@@ -1,8 +1,6 @@
-import { transparentize, lighten } from "polished";
+import { lighten } from "polished";
 
 const defaultPrimaryColor = "#1c252f";
-
-const defaultBoxShadow = "#ababab";
 
 const defaultBorderColor = "#000000";
 
@@ -14,11 +12,6 @@ export const colors = {
         light: lighten(0.5, defaultPrimaryColor),
         normal: lighten(0.2, defaultPrimaryColor),
         dark: defaultPrimaryColor
-    },
-    boxShadows: {
-        light: transparentize(0.33, defaultBoxShadow),
-        normal: transparentize(0.66, defaultBoxShadow),
-        dark: defaultBoxShadow
     },
     borders: {
         light: lighten(0.5, defaultBorderColor),

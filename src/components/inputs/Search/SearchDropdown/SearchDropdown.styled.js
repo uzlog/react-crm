@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "../../../../constants/colors";
+import boxShadows from "../../../../constants/boxShadows";
 
 const generateXPosition = position => {
     if (position === "left") {
@@ -38,5 +39,5 @@ export const StyledDropdown = styled.div`
     ${props => generatePosition(props.location)}
     background: ${({ background }) => background};
     border: 1px solid ${colors.borders.light};
-    box-shadow: 0px 0px 2px 1px ${colors.boxShadows.normal};
+    box-shadow: ${boxShadows.normal.medium};
 `;

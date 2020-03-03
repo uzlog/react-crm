@@ -7,6 +7,10 @@ const Clients = () => {
 
     console.log({ isLoading, response, error });
 
+    if (isLoading) {
+        return <h1>Loading...</h1>;
+    }
+
     return (
         <div>
             <h1>This is the clients page!</h1>
