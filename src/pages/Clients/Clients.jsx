@@ -1,19 +1,37 @@
 import React from "react";
-import useGet from "../../api/hooks/useGet";
-import { clients } from "../../api/routes/clients";
+import VirtualScroller from "../../components/VirtualScroller/VirtualScroller";
+import { fetchClients } from "../../api/queries/clients";
+
+const RowRenderer = (index, style, listItems) => {
+    // console.log({ style });
+    // return <div style={style}>{item.name}</div>;
+
+    let label;
+
+    const item = listItems[index];
+
+    if (item) {
+        label = item.name;
+    } else {
+        label = "Loading...";
+    }
+    return (
+        <div className="ListItem" style={style}>
+            {label}
+        </div>
+    );
+};
 
 const Clients = () => {
-    const { isLoading, response, error } = useGet({ url: clients });
-
-    console.log({ isLoading, response, error });
-
-    if (isLoading) {
-        return <h1>Loading...</h1>;
-    }
-
     return (
         <div>
             <h1>This is the clients page!</h1>
+            <React.Suspense fallback={<h1>Loading...</h1>}>
+                <VirtualScroller
+                    query={fetchClients}
+                    RowRenderer={RowRenderer}
+                />
+            </React.Suspense>
         </div>
     );
 };
