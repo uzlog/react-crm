@@ -2,59 +2,82 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
+import AutoSizer from "react-virtualized-auto-sizer";
 import { useQuery } from "react-query";
+import debounce from "../../helpers/debounce";
 
-// There is an issue with the window being blank after loading additional items. Then you scroll, and it fixes it. I think this is because of the react suspense displayingf the loading fallback, then coming back to this.
+const rowLimit = 40;
+
+const isItemLoaded = (index, listItems) => !!listItems[index];
+
+const loadMoreItems = debounce(async (startIndex, setOffset) => {
+    setOffset(startIndex);
+}, 100);
+
 export const VirtualScroller = ({ items, query, RowRenderer }) => {
     const [listItems, setListItems] = useState(items);
-    const [pageNo, setPageNo] = useState(1);
-    const rowLimit = 20;
-    const { data, isFetching } = useQuery([{ pageNo, limit: rowLimit }], query);
+    const [offset, setOffset] = useState(0);
+    const [paging, setPaging] = useState({ items: 0 });
+    const { data, isFetching } = useQuery(
+        [{ offset, limit: rowLimit }],
+        query,
+        {
+            suspense: false
+        }
+    );
 
     useEffect(() => {
-        setListItems([...listItems, ...data]);
-    }, [data]);
+        if (data && !isFetching) {
+            const { startIndex, endIndex } = data.paging;
+            const newListItems = [...listItems];
+            let dataIndex = 0;
 
-    const isItemLoaded = index => {
-        return index < listItems.length;
-    };
+            for (
+                let offsetIndex = startIndex;
+                offsetIndex <= endIndex;
+                offsetIndex++
+            ) {
+                newListItems[offsetIndex] = data.data[dataIndex];
 
-    console.log({ pageNo, listItems, data });
+                dataIndex++;
+            }
 
-    // Only load 1 page of items at a time.
-    // Pass an empty callback to InfiniteLoader in case it asks us to load more than once.
-    const loadMoreItems = isFetching
-        ? () => {}
-        : (startIndex, stopIndex) => {
-              const newPage = Math.ceil(stopIndex / rowLimit);
-              if (newPage > pageNo) {
-                  setPageNo(newPage);
-              }
-          };
+            setListItems(newListItems);
+            setPaging(data.paging);
+        }
+    }, [data, isFetching]);
 
     if (!listItems.length) {
         return null;
     }
 
     return (
-        <InfiniteLoader
-            isItemLoaded={isItemLoaded}
-            loadMoreItems={loadMoreItems}
-            itemCount={1000}
-        >
-            {({ onItemsRendered, ref }) => (
-                <List
-                    height={700}
-                    itemCount={1000}
-                    itemSize={35}
-                    width={300}
-                    onItemsRendered={onItemsRendered}
-                    ref={ref}
+        <AutoSizer>
+            {({ height, width }) => (
+                <InfiniteLoader
+                    isItemLoaded={index => isItemLoaded(index, listItems)}
+                    loadMoreItems={startIndex =>
+                        loadMoreItems(startIndex, setOffset)
+                    }
+                    itemCount={paging.items}
                 >
-                    {({ index, style }) => RowRenderer(index, style, listItems)}
-                </List>
+                    {({ onItemsRendered, ref }) => (
+                        <List
+                            height={height}
+                            itemCount={paging.items}
+                            itemSize={75}
+                            width={width}
+                            onItemsRendered={onItemsRendered}
+                            ref={ref}
+                        >
+                            {({ index, style }) =>
+                                RowRenderer(listItems[index], style, index)
+                            }
+                        </List>
+                    )}
+                </InfiniteLoader>
             )}
-        </InfiniteLoader>
+        </AutoSizer>
     );
 };
 

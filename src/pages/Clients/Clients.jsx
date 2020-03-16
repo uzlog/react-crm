@@ -1,30 +1,24 @@
 import React from "react";
 import VirtualScroller from "../../components/VirtualScroller/VirtualScroller";
 import { fetchClients } from "../../api/queries/clients";
+import ClientBox from "../../components/ClientBox/ClientBox";
 
-const RowRenderer = (index, style, listItems) => {
-    // console.log({ style });
-    // return <div style={style}>{item.name}</div>;
+const RowRenderer = (item, style, index) => {
+    let component;
 
-    let label;
-
-    const item = listItems[index];
+    // console.log({ item, style, index });
 
     if (item) {
-        label = item.name;
+        component = <ClientBox {...item} />;
     } else {
-        label = "Loading...";
+        component = `Loading... ${index}`;
     }
-    return (
-        <div className="ListItem" style={style}>
-            {label}
-        </div>
-    );
+    return <div style={style}>{component}</div>;
 };
 
 const Clients = () => {
     return (
-        <div>
+        <>
             <h1>This is the clients page!</h1>
             <React.Suspense fallback={<h1>Loading...</h1>}>
                 <VirtualScroller
@@ -32,7 +26,7 @@ const Clients = () => {
                     RowRenderer={RowRenderer}
                 />
             </React.Suspense>
-        </div>
+        </>
     );
 };
 

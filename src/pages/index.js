@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar/Sidebar";
-import { PageWrapper } from "./index.styled";
+import { StyledPageWrapper, StyledComponentWrapper } from "./index.styled";
 
 const Page = ({ route: { sidebarEnabled, component: Component } }) => (
-    <PageWrapper>
+    <StyledPageWrapper>
         <Sidebar visible={sidebarEnabled} />
-        <Component />
-    </PageWrapper>
+        <StyledComponentWrapper>
+            <Component />
+        </StyledComponentWrapper>
+    </StyledPageWrapper>
 );
 
 Page.propTypes = {
