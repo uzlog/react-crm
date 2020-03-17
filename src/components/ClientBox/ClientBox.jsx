@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Checkbox from "../inputs/Checkbox/Checkbox";
 import {
     StyledClientBox,
     StyledAvatar,
@@ -15,6 +16,7 @@ export const ClientBox = ({ avatar, name, contact, company }) => {
 
     return (
         <StyledClientBox>
+            <Checkbox />
             <StyledAvatar>
                 <img src={avatar} alt={`${name.firstName} ${name.lastName}`} />
             </StyledAvatar>

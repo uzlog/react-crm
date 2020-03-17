@@ -6,8 +6,6 @@ import ClientBox from "../../components/ClientBox/ClientBox";
 const RowRenderer = (item, style, index) => {
     let component;
 
-    // console.log({ item, style, index });
-
     if (item) {
         component = <ClientBox {...item} />;
     } else {
