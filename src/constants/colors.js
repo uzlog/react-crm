@@ -8,6 +8,7 @@ export const colors = {
     white: "#ffffff",
     black: "#000000",
     gray: "gray",
+    lighGray: "#e3e3e3",
     primary: {
         light: lighten(0.5, defaultPrimaryColor),
         normal: lighten(0.2, defaultPrimaryColor),
