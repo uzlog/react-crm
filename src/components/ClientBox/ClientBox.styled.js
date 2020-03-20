@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import gutters from "../../constants/gutters";
 import boxShadows from "../../constants/boxShadows";
-import colors from "../../constants/colors";
 
 export const StyledClientBox = styled.div`
     display: flex;
