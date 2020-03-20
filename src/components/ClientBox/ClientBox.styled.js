@@ -11,7 +11,7 @@ export const StyledClientBox = styled.div`
 
     :hover {
         background: whitesmoke;
-        // transform: scale(1.01);
+        transform: scale(1.01);
         box-shadow: ${boxShadows.normal.medium};
     }
 `;
