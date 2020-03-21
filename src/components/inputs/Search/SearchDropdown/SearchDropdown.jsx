@@ -27,7 +27,7 @@ SearchDropdown.propTypes = {
 
 SearchDropdown.defaultProps = {
     visible: false,
-    background: colors.gray,
+    background: colors.gray.normal,
     location: "right"
 };
 

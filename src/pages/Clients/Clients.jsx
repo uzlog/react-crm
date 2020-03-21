@@ -2,6 +2,7 @@ import React from "react";
 import VirtualScroller from "../../components/VirtualScroller/VirtualScroller";
 import { fetchClients } from "../../api/queries/clients";
 import ClientBox from "../../components/ClientBox/ClientBox";
+import ColumnHeaders from "../../components/ColumnHeaders/ColumnHeaders";
 
 const RowRenderer = (item, style, index) => {
     let component;
@@ -17,7 +18,7 @@ const RowRenderer = (item, style, index) => {
 const Clients = () => {
     return (
         <>
-            <h1>This is the clients page!</h1>
+            <ColumnHeaders />
             <React.Suspense fallback={<h1>Loading...</h1>}>
                 <VirtualScroller
                     query={fetchClients}

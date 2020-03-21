@@ -19,7 +19,7 @@ export const Checkbox = ({ checked, name, label, className, onChange }) => {
             <FontAwesomeIcon
                 icon={checkedState ? faCheckSquare : faSquare}
                 onClick={handleCheck}
-                color={checkedState ? colors.black : colors.lighGray}
+                color={checkedState ? colors.black : colors.gray.light}
             />
             {/* eslint-disable-next-line jsx-a11y/label-has-for */}
             <label type="text" id={name} htmlFor={name} onClick={handleCheck}>
