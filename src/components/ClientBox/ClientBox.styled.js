@@ -2,6 +2,15 @@ import styled from "styled-components";
 import gutters from "../../constants/gutters";
 import boxShadows from "../../constants/boxShadows";
 
+export const StyledSection = styled.div`
+    padding: ${gutters.half};
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1;
+    transition: all 0.25s ease-in-out;
+`;
+
 export const StyledClientBox = styled.div`
     display: flex;
     align-items: center;
@@ -10,17 +19,12 @@ export const StyledClientBox = styled.div`
 
     :hover {
         background: whitesmoke;
-        transform: scale(1.01);
         box-shadow: ${boxShadows.normal.medium};
-    }
-`;
 
-export const StyledSection = styled.div`
-    padding: ${gutters.half};
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    flex: 1;
+        ${StyledSection} {
+            transform: scale(1.05);
+        }
+    }
 `;
 
 export const StyledAvatar = styled(StyledSection)`
