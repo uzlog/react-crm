@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import gutters from "../../constants/gutters";
 import colors from "../../constants/colors";
+import Spacing from "../../layout/Spacing/Spacing";
 
-export const StyledColumns = styled.div`
+export const StyledColumns = styled(Spacing)`
     display: flex;
-    padding: ${gutters.half};
+    justify-content: space-between;
     background: ${colors.secondary.light};
 `;
 
 export const StyledColumn = styled.div`
     display: flex;
+    flex: 1;
 `;

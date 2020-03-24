@@ -1,13 +1,13 @@
 import React from "react";
 import Widget from "../../components/Widget/Widget";
-import Box from "../../layout/Box/Box";
+import Spacing from "../../layout/Spacing/Spacing";
 
 const Home = () => (
     <div>
         <h1>This is home!</h1>
-        <Box>
+        <Spacing>
             <Widget />
-        </Box>
+        </Spacing>
     </div>
 );
 

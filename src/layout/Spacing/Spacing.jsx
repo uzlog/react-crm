@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { childrenPropType } from "../../constants/propTypes";
 import gutters from "../../constants/gutters";
-import { StyledBox } from "./Box.styled";
+import { StyledSpacing } from "./Spacing.styled";
 
 // TODO: Add responsiveness by having an array of object with the breakpoint, and the new props.
-export const Box = ({ children, ...restProps }) => {
-    return <StyledBox {...restProps}>{children}</StyledBox>;
+export const Spacing = ({ children, ...restProps }) => {
+    return <StyledSpacing {...restProps}>{children}</StyledSpacing>;
 };
 
 /* eslint-disable react/require-default-props */
-Box.propTypes = {
+Spacing.propTypes = {
     m: PropTypes.string, // margin
     mt: PropTypes.string, // margin top
     mr: PropTypes.string, // margin right
@@ -28,8 +28,8 @@ Box.propTypes = {
     children: childrenPropType.isRequired
 };
 
-Box.defaultProps = {
+Spacing.defaultProps = {
     m: gutters.half
 };
 
-export default Box;
+export default Spacing;

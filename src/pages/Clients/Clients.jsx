@@ -18,7 +18,7 @@ const RowRenderer = (item, style, index) => {
 const Clients = () => {
     return (
         <>
-            <ColumnHeaders />
+            <ColumnHeaders pl="7.5em" />
             <React.Suspense fallback={<h1>Loading...</h1>}>
                 <VirtualScroller
                     query={fetchClients}

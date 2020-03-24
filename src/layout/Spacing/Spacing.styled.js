@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import styled from "styled-components";
 
-export const StyledBox = styled.div`
+export const StyledSpacing = styled.div`
     margin: ${({ m }) => m};
     margin-top: ${({ mt, my }) => {
         if (mt) {
