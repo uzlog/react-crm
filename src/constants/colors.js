@@ -13,6 +13,8 @@ const defaultBorderColor = "#000000";
 export const colors = {
     white: "#ffffff",
     black: "#000000",
+    warning: "orange",
+    success: "green",
     gray: {
         light: lighten(0.05, defaultGray),
         normal: defaultGray,

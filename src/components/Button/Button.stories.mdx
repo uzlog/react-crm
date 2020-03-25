@@ -1,0 +1,36 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { Button } from "./Button";
+import { buttonSizes } from "../../constants/button";
+
+<Meta title="Button" component={Button} />
+
+# Button sizes
+
+<Preview>
+    <Story name="small">
+        <Button size={buttonSizes.small}>A Button</Button>
+    </Story>
+    <Story name="normal">
+        <Button size={buttonSizes.normal}>A Button</Button>
+    </Story>
+    <Story name="large">
+        <Button size={buttonSizes.large}>A Button</Button>
+    </Story>
+    <Story name="full width">
+        <Button size={buttonSizes.large} fullWidth>
+            A Button
+        </Button>
+    </Story>
+</Preview>
+
+# Other styles
+
+<Preview>
+    <Story name="disabled">
+        <Button disabled>A Disabled Button</Button>
+    </Story>
+</Preview>
+
+## Props
+
+<Props of={Button} />
