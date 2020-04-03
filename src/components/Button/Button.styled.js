@@ -6,7 +6,8 @@ export const StyledButton = styled.button`
     padding: ${({ size }) => size.padding};
     background: ${({ background }) => background};
     color: ${({ color }) => color};
-    width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+    width: ${({ fullWidth, width }) => (fullWidth ? "100%" : width)};
+    min-width: ${({ minWidth }) => minWidth};
     border: none;
     font-family: inherit;
     font-size: 100%;

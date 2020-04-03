@@ -1,8 +1,9 @@
 import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
 import { Button } from "./Button";
 import { buttonSizes } from "../../constants/button";
 
-<Meta title="Button" component={Button} />
+<Meta title="Button" component={Button} decorators={[withKnobs]} />
 
 # Button sizes
 
@@ -24,6 +25,12 @@ import { buttonSizes } from "../../constants/button";
 </Preview>
 
 # Other styles
+
+<Preview>
+    <Story name="loading">
+        <Button isLoading={boolean("isLoading", true)}>A Loading Button</Button>
+    </Story>
+</Preview>
 
 <Preview>
     <Story name="disabled">
