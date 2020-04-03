@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import useOnClickOutside from "use-onclickoutside";
 import TextInput from "../TextInput/TextInput";
@@ -9,33 +9,45 @@ const Search = ({
     displayDropdown,
     defaultDropdownOpen,
     dropdownLocation,
-    children
+    initialSearchTerm,
+    children,
+    ...textInputProps
 }) => {
     const [dropdownVisible, setDropdownVisible] = useState(defaultDropdownOpen);
+    const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
     const ref = useRef();
     useOnClickOutside(ref, () => setDropdownVisible(false));
 
-    const handleSearchChange = event => {
-        const searchValue = event.currentTarget.value;
-
-        if (searchValue) {
-            setDropdownVisible(true);
-        }
-    };
-
     const handleSearchOnFocus = () => {
-        setDropdownVisible(true);
+        return searchTerm.length && setDropdownVisible(true);
     };
+
+    useEffect(() => {
+        if (searchTerm.length) {
+            setDropdownVisible(true);
+        } else {
+            setDropdownVisible(false);
+        }
+    }, [searchTerm]);
 
     return (
         <StyledSearch ref={ref} onFocus={handleSearchOnFocus}>
-            <TextInput handleOnChange={handleSearchChange} />
-            <SearchDropdown
-                visible={displayDropdown && dropdownVisible}
-                location={dropdownLocation}
-            >
-                {children}
-            </SearchDropdown>
+            <TextInput
+                handleOnChange={event =>
+                    setSearchTerm(event.currentTarget.value)
+                }
+                value={searchTerm}
+                {...textInputProps}
+            />
+            {children && (
+                <SearchDropdown
+                    visible={displayDropdown && dropdownVisible}
+                    location={dropdownLocation}
+                    searchTerm={searchTerm}
+                >
+                    {children}
+                </SearchDropdown>
+            )}
         </StyledSearch>
     );
 };
@@ -44,16 +56,18 @@ Search.propTypes = {
     displayDropdown: PropTypes.bool,
     defaultDropdownOpen: PropTypes.bool,
     dropdownLocation: PropTypes.string,
+    initialSearchTerm: PropTypes.string,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
-    ]).isRequired
+    ])
 };
 
 Search.defaultProps = {
     displayDropdown: true,
     defaultDropdownOpen: false,
-    dropdownLocation: "bottom"
+    dropdownLocation: "bottom",
+    initialSearchTerm: ""
 };
 
 export default Search;

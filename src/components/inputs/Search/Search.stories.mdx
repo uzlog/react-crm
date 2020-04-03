@@ -1,0 +1,37 @@
+import { Meta, Story, Props } from "@storybook/addon-docs/blocks";
+import Search from "./Search";
+
+export const SearchDropdown = ({ searchTerm }) => {
+    return (
+        <div>
+            Sidebar search dropdown is open! You can pass in props to it....
+            Like you are searching for: {searchTerm}
+        </div>
+    );
+};
+
+<Meta title="Inputs/search" component={Search} />
+
+# Plain search input
+
+<Preview>
+    <Story name="search">
+        <Search color="black" />
+    </Story>
+</Preview>
+
+# Search input with dropdown
+
+<Preview>
+    <Story name="search with dropdown">
+        <div style={{ minHeight: "100px" }}>
+            <Search color="black" initialSearchTerm="My Search Term Here">
+                <SearchDropdown />
+            </Search>
+        </div>
+    </Story>
+</Preview>
+
+## Props
+
+<Props of={Search} />

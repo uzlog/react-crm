@@ -6,6 +6,7 @@ import fontSizes from "../../../constants/fontSizes";
 import { StyledInput } from "./TextInput.styled";
 
 const TextInput = ({
+    value,
     handleOnChange,
     background,
     color,
@@ -16,6 +17,7 @@ const TextInput = ({
 }) => {
     return (
         <StyledInput
+            value={value}
             placeholder={placeholder}
             onChange={handleOnChange}
             background={background}
@@ -28,6 +30,7 @@ const TextInput = ({
 };
 
 TextInput.propTypes = {
+    value: PropTypes.string,
     handleOnChange: PropTypes.func,
     background: PropTypes.string,
     color: PropTypes.string,
@@ -38,6 +41,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
+    value: "",
     handleOnChange: () => {},
     background: "none",
     color: colors.white,

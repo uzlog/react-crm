@@ -15,6 +15,15 @@ export const StyledCheckboxWrapper = styled.div`
         }
     }
 
+    label {
+        margin: 0 ${gutters.half};
+        user-select: none;
+
+        :hover {
+            cursor: pointer;
+        }
+    }
+
     label:hover {
         cursor: pointer;
     }
