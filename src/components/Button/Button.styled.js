@@ -4,7 +4,7 @@ import boxShadows from "../../constants/boxShadows";
 
 export const StyledButton = styled.button`
     padding: ${({ size }) => size.padding};
-    background: ${({ background }) => background};
+    background: ${({ background, theme }) => background || theme.background};
     color: ${({ color }) => color};
     width: ${({ fullWidth, width }) => (fullWidth ? "100%" : width)};
     min-width: ${({ minWidth }) => minWidth};
@@ -19,8 +19,8 @@ export const StyledButton = styled.button`
 
     :hover {
         cursor: pointer;
-        background: ${({ background, disabled }) =>
-            !disabled && darken(0.05, background)};
+        background: ${({ background, theme, disabled }) =>
+            !disabled && darken(0.05, background || theme.background)};
         box-shadow: ${boxShadows.normal.medium};
     }
 

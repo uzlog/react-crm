@@ -2,11 +2,11 @@ import React, { useRef, useState, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { buttonSizes } from "../../constants/button";
+import { buttonSizes, buttonThemes } from "../../constants/button";
 import colors from "../../constants/colors";
 import { StyledButton } from "./Button.styled";
 
-export const Button = ({ isLoading, children, ...restProps }) => {
+export const Button = ({ isLoading, disabled, children, ...restProps }) => {
     const itemRef = useRef(null);
     const [itemWidth, setItemWidth] = useState(0);
 
@@ -20,7 +20,7 @@ export const Button = ({ isLoading, children, ...restProps }) => {
     return (
         <StyledButton
             {...restProps}
-            disabled={isLoading}
+            disabled={disabled || isLoading}
             ref={itemRef}
             minWidth={isLoading && itemWidth}
         >
@@ -36,6 +36,9 @@ Button.propTypes = {
         fontSize: PropTypes.string,
         padding: PropTypes.string
     }),
+    theme: PropTypes.shape({
+        background: PropTypes.string
+    }),
     background: PropTypes.string,
     color: PropTypes.string,
     fullWidth: PropTypes.bool,
@@ -47,7 +50,7 @@ Button.defaultProps = {
     isLoading: false,
     width: "auto",
     size: buttonSizes.normal,
-    background: colors.primary.normal,
+    theme: buttonThemes.normal,
     color: colors.white,
     fullWidth: false,
     disabled: false

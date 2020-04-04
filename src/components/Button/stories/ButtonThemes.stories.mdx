@@ -1,0 +1,30 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { boolean } from "@storybook/addon-knobs";
+import { Button } from "../Button";
+import { buttonSizes, buttonThemes } from "../../../constants/button";
+
+<Meta title="Button/Themes" component={Button} />
+
+# Button themes
+
+<Preview>
+    <Story name="normal">
+        <Button theme={buttonThemes.normal}>A Normal Button</Button>
+    </Story>
+    <Story name="info">
+        <Button theme={buttonThemes.info}>A Info Button</Button>
+    </Story>
+    <Story name="success">
+        <Button theme={buttonThemes.success}>A Success Button</Button>
+    </Story>
+    <Story name="warning">
+        <Button theme={buttonThemes.warning}>A Warning Button</Button>
+    </Story>
+    <Story name="danger">
+        <Button theme={buttonThemes.danger}>A Danger Button</Button>
+    </Story>
+</Preview>
+
+## Props
+
+<Props of={Button} />
