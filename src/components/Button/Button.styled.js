@@ -8,6 +8,7 @@ export const StyledButton = styled.button`
     color: ${({ color }) => color};
     width: ${({ fullWidth, width }) => (fullWidth ? "100%" : width)};
     min-width: ${({ minWidth }) => minWidth};
+    border-radius: 2px;
     border: none;
     font-family: inherit;
     font-size: 100%;
