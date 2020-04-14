@@ -17,7 +17,7 @@
         "build": "webpack --mode production",
         "start:client": "webpack-dev-server --config ./webpack.config.js --mode development --hot",
         "start:server": "babel-node ./server/index.js",
-        "start": "run-p start:*",
+        "start": "run-p --silent start:*",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
     },
