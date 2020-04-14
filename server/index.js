@@ -1,3 +1,4 @@
+import "colors";
 import fastify from "./fastify";
 import routes from "./routes";
 
@@ -8,8 +9,12 @@ Object.keys(routes).map(key => {
 const start = async () => {
     try {
         await fastify.listen(3000);
-        fastify.log.info(
-            `server listening on ${fastify.server.address().port}`
+        // eslint-disable-next-line no-console
+        console.log(
+            "Api started at:".green,
+            `http://${fastify.server.address().address}:${
+                fastify.server.address().port
+            }`.underline
         );
     } catch (err) {
         fastify.log.error(err);

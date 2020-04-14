@@ -36,5 +36,6 @@ export const StyledAvatar = styled(StyledSection)`
     img {
         height: 100%;
         border-radius: 50px;
+        user-select: none;
     }
 `;

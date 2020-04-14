@@ -1,3 +1,4 @@
+require("colors");
 const path = require("path");
 const PrettierPlugin = require("prettier-webpack-plugin");
 
@@ -22,6 +23,17 @@ module.exports = {
     plugins: [new PrettierPlugin()],
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, "public")
+        contentBase: path.resolve(__dirname, "public"),
+        onListening: server => {
+            const { port, address } = server.listeningApp.address();
+
+            // eslint-disable-next-line no-console
+            console.log(
+                "Front-end started at:".green,
+                `http://${address}:${port}`.underline
+            );
+        },
+        stats: "minimal",
+        noInfo: true
     }
 };
